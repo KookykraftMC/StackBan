@@ -133,7 +133,7 @@ public class EventListener {
 		for (Transaction<BlockSnapshot> transaction : event.getTransactions()) {
 			BlockSnapshot snapshot = transaction.getFinal();
 
-			if (snapshot.getState().getType().equals(BlockTypes.AIR)) {
+			if (snapshot.getState().getType().equals(BlockTypes.AIR) || !snapshot.getState().getType().getItem().isPresent()) {
 				continue;
 			}
 
@@ -163,7 +163,7 @@ public class EventListener {
 		for (Transaction<BlockSnapshot> transaction : event.getTransactions()) {
 			BlockSnapshot snapshot = transaction.getFinal();
 
-			if (snapshot.getState().getType().equals(BlockTypes.AIR)) {
+			if (snapshot.getState().getType().equals(BlockTypes.AIR) || !snapshot.getState().getType().getItem().isPresent()) {
 				continue;
 			}
 
@@ -193,7 +193,7 @@ public class EventListener {
 		for (Transaction<BlockSnapshot> transaction : event.getTransactions()) {
 			BlockSnapshot snapshot = transaction.getOriginal();
 
-			if (snapshot.getState().getType().equals(BlockTypes.AIR)) {
+			if (snapshot.getState().getType().equals(BlockTypes.AIR) || !snapshot.getState().getType().getItem().isPresent()) {
 				continue;
 			}
 
