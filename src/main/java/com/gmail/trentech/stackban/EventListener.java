@@ -133,7 +133,7 @@ public class EventListener {
 		for (Transaction<BlockSnapshot> transaction : event.getTransactions()) {
 			BlockSnapshot snapshot = transaction.getFinal();
 
-			if (snapshot.getState().getType().equals(BlockTypes.AIR) || !snapshot.getState().getType().getItem().isPresent()) {
+			if (snapshot.getState().getType().equals(BlockTypes.AIR) || snapshot.getState().getType().equals(ItemTypes.NONE)) {
 				continue;
 			}
 
@@ -163,7 +163,7 @@ public class EventListener {
 		for (Transaction<BlockSnapshot> transaction : event.getTransactions()) {
 			BlockSnapshot snapshot = transaction.getFinal();
 
-			if (snapshot.getState().getType().equals(BlockTypes.AIR) || !snapshot.getState().getType().getItem().isPresent()) {
+			if (snapshot.getState().getType().equals(BlockTypes.AIR) || snapshot.getState().getType().equals(ItemTypes.NONE)) {
 				continue;
 			}
 
@@ -193,7 +193,7 @@ public class EventListener {
 		for (Transaction<BlockSnapshot> transaction : event.getTransactions()) {
 			BlockSnapshot snapshot = transaction.getOriginal();
 
-			if (snapshot.getState().getType().equals(BlockTypes.AIR) || !snapshot.getState().getType().getItem().isPresent()) {
+			if (snapshot.getState().getType().equals(BlockTypes.AIR) || snapshot.getState().getType().equals(ItemTypes.NONE)) {
 				continue;
 			}
 
@@ -214,7 +214,7 @@ public class EventListener {
 		}
 	}
 
-	// NOT WORKING
+	/* NOT WORKING
 	@Listener
 	@Exclude({ ClickInventoryEvent.Drop.class })
 	public void onClickInventoryEvent(ClickInventoryEvent event, @First Player player) {
@@ -237,9 +237,9 @@ public class EventListener {
 				Sponge.getScheduler().createTaskBuilder().delayTicks(2).execute(c -> transaction.getSlot().clear()).submit(Main.getPlugin());
 			}
 		}
-	}
+	}*/
 
-	// NOT WORKING
+	/* NOT WORKING
 	@Listener
 	public void onDropItemEvent(DropItemEvent.Pre event, @First Player player) {
 		System.out.println("DROP");
@@ -259,7 +259,7 @@ public class EventListener {
 				event.setCancelled(true);
 			}
 		}
-	}
+	}*/
 
 	@Listener
 	public void onChangeInventoryEvent(ChangeInventoryEvent.Held event, @First Player player) {
